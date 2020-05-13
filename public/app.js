@@ -6,16 +6,30 @@ document.addEventListener("DOMContentLoaded", (event) => {
   //reference object in database table posts with id firstpost
   const myPost = db.collection("post").doc("firstpost");
 
-  myPost.get()
-  .then(doc => {
+  myPost.onSnapshot(doc => {
 
     const data = doc.data();
     document.write(data.title + `<br>`)
     console.log(data)
-    document.write(data.views )
+    document.write(data.views + `<br>` )
+    document.write(data.createdAt + `<br>` )
+
 
   })
 
+  function updatePost(event) {
+    const app = firebase.app();
+  }
+//Request post from firestore
+  // myPost.get()
+  // .then(doc => {
+
+  //   const data = doc.data();
+  //   document.write(data.title + `<br>`)
+  //   console.log(data)
+  //   document.write(data.views )
+
+  // })
 });
 // //GOOGLE AUTHENTICATION
 // function googleLogin() {
