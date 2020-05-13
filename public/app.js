@@ -9,17 +9,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
   myPost.onSnapshot(doc => {
 
     const data = doc.data();
-    document.write(data.title + `<br>`)
-    console.log(data)
-    document.write(data.views + `<br>` )
-    document.write(data.createdAt + `<br>` )
+
+    document.querySelector('#title').innerHTML = data.title
 
 
   })
 
-  function updatePost(event) {
-    const app = firebase.app();
-  }
+
 //Request post from firestore
   // myPost.get()
   // .then(doc => {
@@ -31,6 +27,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   // })
 });
+function updatePost(e) {
+  const db = firebase.firestore();
+  const myPost = db.collection("post").doc("firstpost");
+  myPost.update({ title: e.target.value })
+}
 // //GOOGLE AUTHENTICATION
 // function googleLogin() {
 //   const provider = new firebase.auth.GoogleAuthProvider();
