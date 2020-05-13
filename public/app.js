@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
   //reference database
   const db = firebase.firestore();
   const productsRef = db.collection('product');
-  const query = productsRef.where('price', '>', 20);
-  
+  //const query = productsRef.where('price', '>', 20);
+  const query = productsRef.orderBy('price', 'desc')
+  .limit(1)
   query.get()
        .then(products => {
          products.forEach(doc => {
